@@ -9,7 +9,7 @@ cmake_minimum_required(VERSION 3.22.1)
 # Since this is the top level CMakeLists.txt, the project name is also accessible
 # with ${CMAKE_PROJECT_NAME} (both CMake variables are in-sync within the top level
 # build script scope).
-project("sdl3")
+project("sdl3-template")
 
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
@@ -24,14 +24,14 @@ project("sdl3")
 # System.loadLibrary() and pass the name of the library defined here;
 # for GameActivity/NativeActivity derived applications, the same library name must be
 # used in the AndroidManifest.xml file.
-add_library(${CMAKE_PROJECT_NAME} SHARED
-        # List C/C++ source files with relative paths to this CMakeLists.txt.
-        native-lib.cpp)
-
-# Specifies libraries CMake should link to your target library. You
-# can link libraries from various origins, such as libraries defined in this
-# build script, prebuilt third-party libraries, or Android system libraries.
-target_link_libraries(${CMAKE_PROJECT_NAME}
-        # List libraries link to the target library
+add_library(
+        sdl3-template SHARED
+        main.cpp
+        ${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c)
+target_include_directories(
+        sdl3-template PRIVATE
+        ${ANDROID_NDK}/sources/android/native_app_glue)
+target_link_libraries(
+        sdl3-template
         android
         log)
