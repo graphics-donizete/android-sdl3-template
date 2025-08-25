@@ -1,0 +1,4 @@
+[submodule "app/src/main/cpp/SDL"]
+	path = app/src/main/cpp/SDL
+	url = https://github.com/libsdl-org/SDL.git
+	branch = release-3.2.x

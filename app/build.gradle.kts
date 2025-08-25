@@ -17,6 +17,7 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags += "-std=c++17"
+                arguments += listOf("-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON")
             }
         }
     }
@@ -35,6 +36,7 @@ android {
             version = "3.22.1"
         }
     }
+    ndkVersion = "29.0.13846066"
 }
 
 dependencies {

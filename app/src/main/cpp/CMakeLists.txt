@@ -11,6 +11,9 @@ cmake_minimum_required(VERSION 3.22.1)
 # build script scope).
 project("sdl3-template")
 
+set(BUILD_SHARED_LIBS OFF)
+add_subdirectory(SDL)
+
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
@@ -28,10 +31,13 @@ add_library(
         sdl3-template SHARED
         main.cpp
         ${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c)
+
 target_include_directories(
         sdl3-template PRIVATE
         ${ANDROID_NDK}/sources/android/native_app_glue)
+
 target_link_libraries(
         sdl3-template
         android
-        log)
+        log
+        SDL3::SDL3)
